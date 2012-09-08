@@ -34,7 +34,9 @@ $(call inherit-product-if-exists, vendor/motorola/sunfire/sunfire-vendor.mk)
 PRODUCT_COPY_FILES += \
     device/motorola/sunfire/scripts/pds_perm_fix.sh:system/bin/pds_perm_fix.sh \
     device/motorola/sunfire/scripts/bt_init_wrapper.sh:system/bin/bt_init_wrapper.sh \
-    device/motorola/sunfire/scripts/hciattach_wrapper.sh:system/bin/hciattach_wrapper.sh
+    device/motorola/sunfire/scripts/hciattach_wrapper.sh:system/bin/hciattach_wrapper.sh \
+    device/motorola/sunfire/recovery/sbin/touchpad:recovery/root/sbin/touchpad \
+    device/motorola/sunfire/recovery/sbin/touchpad.cfg:recovery/root/sbin/touchpad.cfg
 
 # sysctl conf
 PRODUCT_COPY_FILES += \
