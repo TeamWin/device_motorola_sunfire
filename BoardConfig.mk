@@ -41,8 +41,8 @@ TARGET_ARCH_VARIANT_FPU := vfpv3-d16
 TARGET_CPU_SMP := true
 TARGET_HAVE_TEGRA_ERRATA_657451 := true
 
-BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/sunfire/recovery/graphics.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/motorola/sunfire/recovery/recovery_ui.c
+#BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/sunfire/recovery/graphics.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/motorola/sunfire/recovery/recovery_ui.c
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_INTERNAL_PARTITIONS := true
 
@@ -59,8 +59,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1073741824
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_JANKY_BACKBUFFER := true
 TARGET_PREBUILT_KERNEL := device/motorola/sunfire/kernel
-BOARD_MKE2FS := device/motorola/sunfire/utilities/mke2fs
-#TARGET_USERIMAGES_USE_EXT4 := true
+#BOARD_MKE2FS := device/motorola/sunfire/utilities/mke2fs
+TARGET_USERIMAGES_USE_EXT4 := true
 # Below is a sample of how you can tweak the mount points using the board config.
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_RECOVERY_IGNORE_BOOTABLES := true
@@ -69,7 +69,7 @@ BOARD_DATA_FILESYSTEM := ext3
 BOARD_DATA_FILESYSTEM_OPTIONS := nosuid,nodev,relatime,data=ordered
 BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p12
 BOARD_SYSTEM_FILESYSTEM_OPTIONS := noatime,nodiratime,data=ordered
-BOARD_SYSTEM_FILESYSTEM := ext3
+BOARD_SYSTEM_FILESYSTEM := ext4
 BOARD_CACHE_DEVICE := /dev/block/mmcblk0p15
 BOARD_CACHE_FILESYSTEM := ext3
 BOARD_CACHE_FILESYSTEM_OPTIONS := nosuid,nodev,relatime,data=ordered
@@ -86,7 +86,7 @@ BOARD_VOLD_MAX_PARTITIONS := 18
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun1/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun%d/file
 BOARD_HIJACK_BOOT_PATH := /preinstall/
 BOARD_HIJACK_EXECUTABLES := logwrapper
 BOARD_HIJACK_LOG_ENABLE := false
@@ -135,3 +135,30 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Dock Audio
 BOARD_USE_MOTO_DOCK_HACK := true
+
+# twrp settings:
+TARGET_RECOVERY_INITRC := device/motorola/sunfire/init.recovery.rc
+#DEVICE_RESOLUTION := 480x800
+#DEVICE_RESOLUTION := 480x854
+DEVICE_RESOLUTION := 540x960
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+SP1_NAME := "pds"
+SP1_BACKUP_METHOD := files
+SP1_MOUNTABLE := 1
+SP2_NAME := "osh"
+SP2_DISPLAY_NAME := "Webtop"
+SP2_BACKUP_METHOD := files
+SP2_MOUNTABLE := 1
+#SP3_NAME := "preinstall"
+#SP3_BACKUP_METHOD := image
+#SP3_MOUNTABLE := 0
+#RECOVERY_SDCARD_ON_DATA := true
+#BOARD_HAS_NO_REAL_SDCARD := true
+TW_INCLUDE_DUMLOCK := true
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_NO_BATT_PERCENT := true
+TW_CUSTOM_POWER_BUTTON := 107
+TW_NO_REBOOT_BOOTLOADER := true
